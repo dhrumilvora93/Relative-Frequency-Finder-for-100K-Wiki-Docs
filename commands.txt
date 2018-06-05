@@ -1,0 +1,35 @@
+=====COMMANDS=====
+
+=====PSUEDO DISTRIBUTED MODE=====
+1. Format Name Node
+bin/hadoop namenode -format
+
+2. Start HDFS Server
+bin/start-dfs.sh
+
+3. Load Input to DFS
+bin/hadoop dfs -put 100WikiText.txt input
+
+4. Run 
+hadoop jar word.jar FindRelativeFreqDriver /input/100KWikiText.txt /output
+
+5. Get output 
+hadoop fs -get output output
+cat output/*
+
+==== FULLY DISTRIBUTED MODE ====
+1. Format Name Node 
+hadoop namenode -format
+
+2. Start Server 
+start-all.sh
+
+3. Load Input to DFS
+hadoop fs -put 100WikiText.txt input
+
+4. Run 
+hadoop jar word.jar FindRelativeFreqDriver input output
+
+5. Get output 
+hadoop fs -get output output
+cat output/*

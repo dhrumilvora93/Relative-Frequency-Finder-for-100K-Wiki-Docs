@@ -1,0 +1,80 @@
+====FULLY DISTRIBUTED MODE====
+
+
+===NAME NODE===
+
+etc/hadoop/core-site.xml
+
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://ec2-34-228-102-97.compute-1.amazonaws.com</value>
+    </property>
+	<property>
+        <name>hadoop.tmp.dir</name>
+        <value>/home/ubuntu/hdfstmp</value>
+    </property>	
+</configuration> 
+
+
+etc/hadoop/hdfs-site.xml
+
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+	<property>
+        <name>dfs.permissions</name>
+        <value>false</value>
+    </property>
+</configuration>
+
+
+etc/hadoop/mapred-site.xml
+
+<configuration>
+    <property>
+        <name>mapred.job.tracker</name>
+        <value>hdfs://ec2-34-228-102-97.compute-1.amazonaws.com</value>
+    </property>
+</configuration>
+
+
+====PSUEDO DISTRIBUTED MODE====
+
+etc/hadoop/core-site.xml
+
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost:9000</value>
+    </property>
+</configuration>
+
+
+etc/hadoop/hdfs-site.xml
+
+<configuration>
+    <property>
+        <name>dfs.replication</name>
+        <value>1</value>
+    </property>
+</configuration>
+
+
+etc/hadoop/hadoop-env.sh
+
+export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.121.x86_64/jre
+
+==== HADOOP CLUSTER SETTINGS ====
+
+Number of VM Instances = 2
+Input Format : Individual words appended with * and have values 1
+Output Format Comman Seperated Word Paid Key
+
+====== RUNNING TIME =====
+Psudeo Distributed Mode := 12 mins 35 sec
+Fully Distributed Mode := approx 9 min 12 sec
+ 
+ 	

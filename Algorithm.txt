@@ -1,0 +1,10 @@
+Algorithm:-
+
+
+This Algorithm uses 2 Pairs of Mappers & Reducers.
+In the first Mapper, each line is split using the RegEx for a blank space and then then trimmed.
+The 2 adjacent words are then iteratively set as the Key and their value is set as 1 by default.
+The Combiner is then executed to group the keys.
+The Reduce phase calculates the relative frequencies for each key and is written in the context.But this is not in descending order as required and hence, another pair of a Mapper and a Reducer is required.So the temporary output of this phase 'temp_output' is sent as an input to the 2nd Mapper.
+In the 2nd Mapper, the keys and values from the previous stage are interchanged so that the Descender class can sort the relative frequencies in descending order as required.
+The 2nd Reducer filters out the results with relative frequencies as 1.0 and also lists out only the top 100 results.
